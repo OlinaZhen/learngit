@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+.right{
+	float:right;
+}
+.left{
+	float:left;
+}
+.header{
+	width:100%;
+	height:30px;
+	background:#03F;
+}
+
+nav{
+	
+	width:10%;
+	background:#96C;
+	float:left;
+	height:900px;
+}
+.rightarticle{
+	width:90%;
+	float:right;
+	background:#666;
+	height:900px;
+}
+	.header_h{
+		width:calc(100%-20px);
+		height:20px;
+		padding-left:20px;
+		background:#999;
+	}
+	.header_content{
+		width:85%;
+		height:90%;
+		margin:auto;
+		background:#FCF;
+		margin-top:15px;
+	}
+		.one{
+			height:90px;
+			width:100%;
+			background:#CCC;
+			padding-top:3px
+		}
+			.one dl>dt{
+				display:inline-block;
+				line-height:27px;
+				margin-right:5px;
+			}
+			.one dl>dd{
+				display:inline-block;
+				line-height:27px;
+			}
+			#sale_1{
+				margin-left: 210px;
+			}
+			.bt-seacher{
+				float:right;
+				margin-right:190px;
+				display:inline-block;
+				width: 56px;
+				background: aquamarine;
+			}
+			.dl-h{
+				float:left;
+			}
+		.two{
+			display:flex;
+			height:70px;
+			width:100%;
+			
+			padding-top:2px;
+			margin-top:10px;
+			
+		}
+			.two1{
+				background:#CCC;
+				height:100%;
+				width:3%;
+				margin-right:5px;
+			}
+			.two2{
+				background:#CCC;
+				height:100%;
+				width:13%;
+				margin-right:5px;
+			}
+			#two2_last{
+				margin-right:0px;
+				background:#CCC;
+				height:100%;
+				width:13%;
+				
+			}
+		.three{
+			width:100%;
+			height:75px;
+			display:flex;
+			justify-content:space-between;
+			
+		}
+			.three1{
+				width:23%;
+				height:100%;
+				background:#CCC;
+				
+				
+			}
+			.p_1{
+				font-size:10px;
+			}
+		.four{
+			width:100%;
+			height:200px;
+			margin-top:10px;
+			
+			
+		}
+			.four1{
+				
+			width:58%;
+			height:100%;
+			background:#CCC;
+			
+		}
+			.four1_h{
+				
+				width:100%;
+				height:15px;
+				
+			}
+			.four2{
+			width:38%;
+			height:100%;
+			background:#CCC;
+			display:inline;
+			
+		}
+			.four2_h{
+			width:100%;
+			height:15px;
+			background:#666;
+		}
+		.five{
+			width:100%;
+			height:180px;
+			margin-top:10px;
+			
+			
+		}
