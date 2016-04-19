@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>task18</title>
+<style type="text/css">
+.bt{
+	width:30px;
+	height:60px;
+	background:#F00;
+}
+</style>
+<script type="text/javascript">
+	var sz=[];
+	function c(thiss){
+		var sz1=parseInt(thiss.replace("bt",""));
+		sz.splice(sz1,1);
+		display(sz);
+		
+	}
+function display(sz){
+	var where=document.getElementById("where");
+	where.innerHTML=" ";
+	for(var i=0;i<sz.length;i++){
+		var tempp="bt"+i;
+		where.innerHTML=where.innerHTML+"<button onclick=\"c('"+tempp+"')\" class='bt' id='"+tempp+"'>"+sz[i]+"</button>";
+	}
+}
+	window.onload=function(){
+		
+		var sortt=document.getElementById("sortt");
+		sortt.onclick=function(){
+			var len=sz.length;
+			for(var i=0;i<len;i++){
+				var maxx=i;
+				for(var j=i;j<=len;j++){
+					if(sz[maxx]<sz[j])maxx=j;
+				}
+				var temp=sz[i];
+				sz[i]=sz[maxx];
+				sz[maxx]=temp;
+			}
+			display(sz);
+		}
+		
+		var leftadd=document.getElementById("leftadd");
+		var rightadd=document.getElementById("rightadd");
+		var leftless=document.getElementById("leftless");
+		var rightless=document.getElementById("rightless");
+		leftadd.onclick=function(){
+			var temp=sr.value;
+			if(!(10<=temp&&temp<=100)){
+				var sp=document.getElementById("sp");
+				sp.innerHTML="请输入10到100的数字";		
+		    }
+			else{
+				
+				temp=sr.value;
+				sz.splice(0,0,temp);
+				display(sz);
+			}
+		}
+		rightadd.onclick=function(){
+			var temp=sr.value;
+			if(!(10<=temp&&temp<=100)){
+				var sp=document.getElementById("sp");
+				sp.innerHTML="请输入10到100的数字";		
+		    }
+			else{
+				if(sz.length>60){  
+				alert("已经满60个了，不能再添加了");
+				}
+				else{
+				temp=sr.value;
+				sz.push(temp);
+				display(sz);
+				}
+			}
+			
+		}
+		rightless.onclick=function(){
+			var temp=sr.value;
+			if(!(10<=temp&&temp<=100)){
+				var sp=document.getElementById("sp");
+				sp.innerHTML="请输入10到100的数字";		
+		    }
+			else{
+				
+				temp=sr.value;
+				sz.pop();
+				display(sz);
+			}
+			
+		}
+		leftless.onclick=function(){
+			var temp=sr.value;
+			if(!(10<=temp&&temp<=100)){
+				var sp=document.getElementById("sp");
+				sp.innerHTML="请输入10到100的数字";		
+		    }
+			else{
+				
+				temp=sr.value;
+				sz.splice(0,1);
+				display(sz);
+			}
+			
+		}
+			
+	}
+</script>
+</head>
+<input type="text" id="sr"><span id="sp"></span>
+<button id="leftadd">左加</button><button id="rightadd">右加</button><button id="leftless">左减</button><button id="rightless">右减</button><button id="sortt">排序</button>
+<div id="where"></div>
+<body>
+</body>
+</html>
