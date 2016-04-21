@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <script >
+	/*function wee(thiss){
+			//var tem=document.getElementById(this);
+			
+			var now=this.rowIndex;
+			alert("now"+now);
+			
+		}
+		*/
+	window.onload=function(){
+		
+		
+		
+		
+		var aqitable=document.getElementById("aqi-table");
+		var len=aqitable.rows.length;
+		for(var i=1;i<len;i++){
+			var ten="r"+i;
+			
+			var tem=document.getElementById(ten);
+			
+			var now=tem.rowIndex;
+			
+			tem.onclick=function(){
+				
+			aqitable.deleteRow(1);
+			}
+		}
+		
+		
+		var addbtn=document.getElementById("add-btn");
+		addbtn.onclick=function(){
+			var cityinputt=document.getElementById("aqi-city-input").value;
+			var valueinputt=document.getElementById("aqi-value-input").value;
+			var rex = /^[\u4e00-\u9fa5a-zA-Z\/\(\)]+$/;
+            if(valueinputt!=parseInt(valueinputt)){
+					 alert("您输入的不是正整数，请再次输入");
+		     }
+		  else{
+			  if(rex.test(cityinputt)){
+			var aqitable=document.getElementById("aqi-table");
+			var len=aqitable.rows.length;
+		
+			var newA=aqitable.insertRow(len);
+			var col1=newA.insertCell(0);
+			var col2=newA.insertCell(1);
+			var col3=newA.insertCell(2);
+			col1.innerHTML=cityinputt;
+			col2.innerHTML=valueinputt;
+			col3.innerHTML="<button id='r"+len+"'>删除</button>";
+		 	}
+			else{
+				alert("请输入中英文字符");
+			}
+		 }
+		
+	}
+}</script>
+  </head>
+<body>
+
+  <div>
+    <label>城市名称：<input id="aqi-city-input" type="text"></label><br>
+    <label>空气质量指数：<input id="aqi-value-input" type="text"></label><br>
+    <button id="add-btn">确认添加</button>
+  </div>
+  <table id="aqi-table">
+  
+    <tr>
+      <td>城市</td><td>空气质量</td><td>操作</td>
+    </tr>
+    <tr>
+      <td>北京</td><td>90</td><td><a id="r1" >删除</a></td>
+    </tr>
+    <tr>
+      <td>北京</td><td>90</td><td><a id="r2">删除</a></td>
+    </tr>
+   
+  </table>
+
+</body>
+</html>
