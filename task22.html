@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+<head>
+<style>
+div{
+	border:1px solid red;
+	display:-webkit-fixed;
+	display:fixed;
+	align-items: center;
+    justify-content: space-around;
+	padding: 15px;
+    margin: 10px;
+   background-color:#06C;
+}
+.active{
+	background:#0C3;
+}
+#container{
+	width:800px;
+	margin:auto;
+}
+</style>
+<meta charset="utf-8">
+<title>task22own</title>
+</head>
+
+<body>
+<!--
+<div id="container">
+
+	<div>
+    	<div>
+        	<div></div>
+            <div></div>
+        </div>
+        	<div></div>
+            <div></div>
+        <div>
+        </div>
+    </div>
+    <div>
+    	<div>
+        	<div></div>
+            <div></div>
+        </div>
+        	<div></div>
+            <div></div>
+        <div>
+    </div>
+    </div>
+</div>
+</div>
+-->
+ <div id="container">
+        <div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+<button id="pre">前序遍历</button>
+<button id="inn">中序遍历</button>
+<button id="post">后序遍历</button>
+
+</body>
+<script>
+var timer;
+var i=0;
+var $=function(id){
+	return document.getElementById(id);
+}
+var animate=[];
+var option={
+	regEvent:function(node, event, func){//添加事件的封装
+						
+                        if (node.addEventListener) {
+                            node.addEventListener(event, func);
+                        } else if (node.attachEvent) {
+                            node.attachEvent("on" + event, func);
+                        } else {
+                            node["on" + event] = func;
+                        }
+                    },
+	addClass:function(node,what){//增加class的封装
+		node.className=what;
+	},
+	removeClass: function(node){//去掉class的封装
+		node.className="";
+	}
+}
+var bianli={
+	preOrder:function(node){//前序遍历的代码
+		if(node!=null){
+		animate.push(node);
+		}
+		if(node.firstElementChild!=null){
+		animate.push(node.firstChild);
+		}
+		if(node.lastElementChild!=null){
+			animate.push(node.lastChild);
+		}
+		
+	},
+	inOrder:function(node){//前序遍历的代码
+		
+		if(node.firstElementChild!=null){
+		animate.push(node.firstChild);
+		}
+		if(node!=null){
+		animate.push(node);
+		}
+		if(node.lastElementChild!=null){
+			animate.push(node.lastChild);
+		}
+		
+	},
+	postOrder:function(node){//前序遍历的代码
+		
+		if(node.firstElementChild!=null){
+		animate.push(node.firstChild);
+		}
+		
+		if(node.lastElementChild!=null){
+			animate.push(node.lastChild);
+		}
+		if(node!=null){
+		animate.push(node);
+		}
+		
+	},
+	goo:function(){
+		/*i=0;
+		timer=setInterval(function(){
+			if(i>0)option.removeClass(animate[i-1]);
+			if(i<animate.length)option.addClass(animate[i],"active");
+			i++;
+			},500);*/
+			 var i = 0;
+                option.addClass(animate[i],"active");
+                timer = setInterval(function(){
+                    i++;
+                    if(i < animate.length){
+                        option.removeClass(animate[i-1]);
+                       option.addClass(animate[i],"active");
+                    }else{
+                        clearInterval(timer);
+                        option.removeClass(animate[i-1]);
+                    }
+                },500)
+	},
+	resett:function(){
+		var szz=document.getElementsByTagName("div");
+		[].forEach.call(szz,function(e){
+			option.removeClass(e);
+		});
+	}
+}
+var one=document.getElementById("pre");
+var two=document.getElementById("inn");
+var three=document.getElementById("post");
+var container=document.getElementById("container");
+option.regEvent(one,"click",function(){
+	
+	animate=[];
+	bianli.resett();
+	clearInterval(timer);
+	bianli.preOrder(container);
+	alert(animate);
+	bianli.goo();
+	
+});
+option.regEvent(two,"click",function(){
+	animate=[];
+	bianli.resett();
+	clearInterval(timer);
+	bianli.inOrder(container);
+	alert(animate);
+	bianli.goo();
+});
+option.regEvent(three,"click",function(){
+	
+	animate=[];
+	bianli.resett();
+	clearInterval(timer);
+	bianli.postOrder(container);
+	alert(animate);
+	bianli.goo();
+});
+</script>
+</html>
